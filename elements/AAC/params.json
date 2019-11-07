@@ -1,0 +1,75 @@
+{
+    "add_is_visible": true,
+    "category": "visual elements",
+    "default_dim": {
+        "height": 20,
+        "width": 20
+    },
+    "display": "Compound Interest",
+    "events": {
+        "AAK": {
+            "caption": "completed calculation",
+            "name": "calculated"
+        }
+    },
+    "fields": {
+        "AAD": {
+            "caption": "Initial",
+            "doc": "initial balance",
+            "editor": "DynamicValue",
+            "name": "initial",
+            "rank": 0,
+            "value": "number"
+        },
+        "AAE": {
+            "caption": "Amount",
+            "doc": "the amount of money you are adding per period",
+            "editor": "DynamicValue",
+            "name": "amount",
+            "optional": true,
+            "rank": 1,
+            "value": "number"
+        },
+        "AAF": {
+            "caption": "Interest",
+            "default_val": 5,
+            "doc": "+% interest",
+            "editor": "StaticNumber",
+            "name": "interest",
+            "rank": 3,
+            "value": "number"
+        },
+        "AAG": {
+            "caption": "Period",
+            "default_val": 12,
+            "doc": "compounding factor (1, 12, 365...)",
+            "editor": "StaticNumber",
+            "name": "period",
+            "rank": 4
+        },
+        "AAH": {
+            "caption": "Years",
+            "default_val": 5,
+            "doc": "number of years you are compounding",
+            "editor": "DynamicValue",
+            "name": "years",
+            "rank": 2,
+            "value": "number"
+        }
+    },
+    "icon": "ion-arrow-graph-up-right",
+    "property_applications": {
+        "Background": false
+    },
+    "states": {
+        "AAJ": {
+            "caption": "Result",
+            "initialization_code": {
+                "add_debugger": true,
+                "fn": "function(properties, context) {\n\n  if (properties.initial, properties.amount, properties.years, properties.interest, properties.period) {\n    instance.data.calculationResult = compound(properties.initial, properties.amount, properties.years, properties.interest, properties.period);\n    return instance.data.calculationResult;\n  } else {\n    return null;\n  }\n\n}"
+            },
+            "name": "result",
+            "value": "number"
+        }
+    }
+}
